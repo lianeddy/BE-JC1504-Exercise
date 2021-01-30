@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     c.name 
   FROM film_category fc
   join film f on f.film_id = fc.film_id
-  join category c on c.category_id = fc.category_id order by f.film_id`;
+  join category c on c.category_id = fc.category_id order by f.film_id limit 20`;
 	if (req.query.rating && req.query.category) {
 		sql += ` WHERE rating = '${req.query.rating}' AND name = '${req.query.category}' ORDER BY f.film_id limit 20`;
 	} else if (req.query.rating) {
