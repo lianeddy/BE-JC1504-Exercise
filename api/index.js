@@ -44,3 +44,18 @@
 //         ...
 //     ]
 // }
+
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const port = 2000;
+const { movieRouter, actorRouter } = require('./router');
+
+const app = express();
+app.use(cors());
+app.use(bodyParser());
+
+app.use('/moviedb', movieRouter);
+app.use('/actordb', actorRouter);
+
+app.listen(port, () => console.log(`API active at port ${port}`));
