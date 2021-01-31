@@ -8,6 +8,7 @@
 // eg. /movies?category=Animation
 // eg. /movies?rating=NC-17
 // Limit to 20 Data per call
+// 
 // response data :
 // [
 //     {
@@ -44,3 +45,18 @@
 //         ...
 //     ]
 // }
+
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const { filmRouter, actorRouter } = require("./router");
+const port = 2000;
+
+app.use(cors());
+app.use(bodyParser());
+
+app.use("/films", filmRouter);
+app.use("/actors", actorRouter);
+
+app.listen(port, () => console.log(`Server listens at port ${port}`));
