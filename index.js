@@ -1,3 +1,26 @@
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const port = 2000;
+const {
+    actorRouter,
+    moviesRouter
+} = require('./router');
+
+const app = express();
+
+app.use(cors());
+app.use(bodyParser());
+
+app.get('/',(req,res) => {
+    res.status(200).send("Weekend Exercise");
+});
+
+app.use("/movies", moviesRouter);
+app.use("/actors", actorRouter);
+
+app.listen(port, () => console.log(`API active at port ${port}`));
+
 // Code Here
 
 // Use database sakila di mysql
