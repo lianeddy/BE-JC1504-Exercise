@@ -44,3 +44,23 @@
 //         ...
 //     ]
 // }
+
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const mysql = require("mysql");
+const { movieRouter, actorRouter } = require("./router");
+const port = 2000;
+
+const app = express();
+app.use(cors());
+app.use(bodyParser());
+
+app.get("/", (req, res) => {
+  res.status(200).send("<h1>Hello from Express</h1>");
+});
+
+app.use("/movies", movieRouter);
+app.use("/actors", actorRouter);
+
+app.listen(port, () => console.log(`Active API at port ${port}`));
