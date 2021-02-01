@@ -1,7 +1,6 @@
-const movieRouter = require("./movieRouter");
-const actorRouter = require("./actorRouter");
+const actors = require("./actors");
+const movies = require("./movies");
 
 module.exports = {
-    movieRouter,
-    actorRouter
+  actors,movies,
 };
